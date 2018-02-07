@@ -1,0 +1,213 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="conf.css">
+<script>
+
+var inum=0;
+var a=[[0,0,0,0,0,0,0],
+       [0,0,0,0,0,0,0],
+       [0,0,0,0,0,0,0],
+       [0,0,0,0,0,0,0],
+       [0,0,0,0,0,0,0],
+       [0,0,0,0,0,0,0],
+       [0,0,0,0,0,0,0]];
+
+function onestart(info){
+  inum=inum+1;
+  //document.write(inum);
+  switch(info){
+    case 1:document.bt.but1.value=1;a[1][1]=1;break;
+    case 2:document.bt.but2.value=1;a[1][2]=1;break;
+    case 3:document.bt.but3.value=1;a[1][3]=1;break;
+    case 4:document.bt.but4.value=1;a[1][4]=1;break;
+    case 5:document.bt.but5.value=1;a[1][5]=1;break;
+    case 6:document.bt.but6.value=1;a[2][1]=1;break;
+    case 7:document.bt.but7.value=1;a[2][2]=1;break;
+    case 8:document.bt.but8.value=1;a[2][3]=1;break;
+    case 9:document.bt.but9.value=1;a[2][4]=1;break;
+    case 10:document.bt.but10.value=1;a[2][5]=1;break;
+    case 11:document.bt.but11.value=1;a[3][1]=1;break;
+    case 12:document.bt.but12.value=1;a[3][2]=1;break;
+    case 13:document.bt.but13.value=1;a[3][3]=1;break;
+    case 14:document.bt.but14.value=1;a[3][4]=1;break;
+    case 15:document.bt.but15.value=1;a[3][5]=1;break;
+    case 16:document.bt.but16.value=1;a[4][1]=1;break;
+    case 17:document.bt.but17.value=1;a[4][2]=1;break;
+    case 18:document.bt.but18.value=1;a[4][3]=1;break;
+    case 19:document.bt.but19.value=1;a[4][4]=1;break;
+    case 20:document.bt.but20.value=1;a[4][5]=1;break;
+    case 21:document.bt.but21.value=1;a[5][1]=1;break;
+    case 22:document.bt.but22.value=1;a[5][2]=1;break;
+    case 23:document.bt.but23.value=1;a[5][3]=1;break;
+    case 24:document.bt.but24.value=1;a[5][4]=1;break;
+    case 25:document.bt.but25.value=1;a[5][5]=1;break;
+  }
+  if(inum>9)
+  twostart();
+}
+
+
+
+function candz(a,b,c,i,j){
+
+  var s=0,t=0;
+
+  c[0]=0;
+  s=i-1;
+  while(s<=i+1){
+    t=j-1;
+    while(t<=j+1){
+      if(i!=s || j!=t){
+        if(a[t][s]==1){
+          c[0]=c[0]+1;
+
+        }//if
+      }//if
+      t++;
+    }//while
+    s++;
+  }//while
+
+  //zougen
+
+  if(c[0]==2){
+    b[i][j]=a[i][j];
+  }
+
+  else if(c[0]==3){
+    b[i][j]=1;
+  }
+
+   else{
+    b[i][j]=0;
+  }
+  //zougenend
+}
+
+function win(a){
+
+  var e=0,is,js;
+  for(is=1;is<=5;is++){
+    for(js=1;js<=5;js++){
+      if(a[is][js]==1)
+      e++;
+    }
+  }
+document.write(e);
+
+if(e>=13)
+document.write("<br>win<br>");
+else {
+  document.write("<br>lose<br>");
+}
+}
+
+
+
+function print(a,b,ina){
+  var is,js;
+  for(is=0;is<=6;is++){
+    for(js=0;js<=6;js++){
+      if(ina==3)
+      a[is][js]=b[is][js];
+      else if(ina==4)
+      document.write(a[is][js]);
+      else if(ina==5)
+      document.write(b[is][js]);
+
+      }
+      if(ina==4||ina==5)document.write("<br>");
+    }
+  }
+
+
+
+
+
+  function twostart(){
+
+         var x,i,j,c=[0],scan=0;
+
+         for(x=1;x<=10;x++){
+
+            b=[[0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0],
+                  [0,0,0,0,0,0,0]];
+
+
+                  document.write("hai<br>");
+                  print(a,b,4);
+
+          for(i=1;i<=5;i++){
+            for(j=1;j<=5;j++){
+              candz(a,b,c,i,j);
+            }
+          }
+          print(a,b,3);
+        }
+          document.write("<br>");
+          print(a,b,4);
+          win(a);
+
+         }
+
+  
+
+
+
+
+</script>
+</head>
+
+
+<body>
+
+<div class="div2">
+
+<form name="bt">
+<p>
+<input type="button" name="but1" class="button" value="0"  onclick="onestart(1)" >
+<input type="button" name="but2" class="button" value="0"  onclick="onestart(2)">
+<input type="button" name="but3" class="button" value="0"  onclick="onestart(3)">
+<input type="button" name="but4" class="button" value="0"  onclick="onestart(4)">
+<input type="button" name="but5" class="button" value="0"  onclick="onestart(5)">
+</p>
+<p>
+<input type="button" name="but6" class="button" value="0"  onclick="onestart(6)">
+<input type="button" name="but7" class="button" value="0"  onclick="onestart(7)">
+<input type="button" name="but8" class="button" value="0"  onclick="onestart(8)">
+<input type="button" name="but9" class="button" value="0"  onclick="onestart(9)">
+<input type="button" name="but10" class="button" value="0"  onclick="onestart(10)">
+</p>
+<p>
+<input type="button" name="but11" class="button" value="0"  onclick="onestart(11)">
+<input type="button" name="but12" class="button" value="0"  onclick="onestart(12)">
+<input type="button" name="but13" class="button" value="0"  onclick="onestart(13)">
+<input type="button" name="but14" class="button" value="0"  onclick="onestart(14)">
+<input type="button" name="but15" class="button" value="0"  onclick="onestart(15)">
+</p>
+<p>
+<input type="button" name="but16" class="button" value="0"  onclick="onestart(16)">
+<input type="button" name="but17" class="button" value="0"  onclick="onestart(17)">
+<input type="button" name="but18" class="button" value="0"  onclick="onestart(18)">
+<input type="button" name="but19" class="button" value="0"  onclick="onestart(19)">
+<input type="button" name="but20" class="button" value="0"  onclick="onestart(20)">
+</p>
+<p>
+<input type="button" name="but21" class="button" value="0"  onclick="onestart(21)">
+<input type="button" name="but22" class="button" value="0"  onclick="onestart(22)">
+<input type="button" name="but23" class="button" value="0"  onclick="onestart(23)">
+<input type="button" name="but24" class="button" value="0"  onclick="onestart(24)">
+<input type="button" name="but25" class="button" value="0"  onclick="onestart(25)">
+</p>
+
+
+
+
+</form>
+</body>
+</html>
